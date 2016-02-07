@@ -1,8 +1,6 @@
 import string
 class SyntaxError(Exception): pass
 class LexicalError(Exception): pass
-# local errors
-# used to be strings
 class Scanner:
     def __init__(self, text):
         self.next = 0
@@ -20,8 +18,6 @@ class Scanner:
             if self.token != '\0':
                 self.scan()
             return value
-# next token/value
-# return prior value
     def scan(self):
         self.value = None
         ix = self.next
@@ -47,7 +43,6 @@ class Scanner:
             else:
                 self.token = 'num'
                 self.value = int(str)
-# subsumes long() in 3.x
         elif self.text[ix] in string.ascii_letters:
             str = ''
             while self.text[ix] in (string.digits + string.ascii_letters):
